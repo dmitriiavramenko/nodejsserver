@@ -6,7 +6,7 @@
 * 
 * Name: Dmitrii Avramenko Student ID: 128138203 Date: 10.10.2021
 *
-* Online (Heroku) Link: 
+* Online (Heroku) Link: https://dmitriiavramenko.herokuapp.com/
 *
 ********************************************************************************/
 var HTTP_PORT = process.env.PORT || 8080;
