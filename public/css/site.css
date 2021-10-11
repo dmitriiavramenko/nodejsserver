@@ -1,0 +1,23 @@
+.navbar-default {
+    background-color: #a9ddff;
+    border-color: #8ebcdb;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    color: black;
+    background-color: #61a6ff;
+}
+.navbar-default .navbar-nav>li>a {
+    color: black;
+}
+.navbar-default .navbar-brand {
+    color:black;
+}
+
+p {
+    font-family: 'Comfortaa', cursive;
+}
+
+h2 {
+    font-family: 'Comfortaa', cursive;
+}
