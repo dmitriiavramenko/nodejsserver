@@ -21,3 +21,7 @@ p {
 h2 {
     font-family: 'Comfortaa', cursive;
 }
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: #8ebcdb;
+}

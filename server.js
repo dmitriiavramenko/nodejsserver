@@ -10,6 +10,7 @@
 *
 ********************************************************************************/
 var HTTP_PORT = process.env.PORT || 8080;
+var path = require('path');
 var data_service = require("./data-service.js");
 var express = require("express");
 var app = express();
@@ -36,6 +37,12 @@ app.get("/departments", (req, res) => {
     }).catch((err) => {
         res.json(JSON.stringify("message: " + err));
     })
+});
+app.get("/employees/add", (req, res) => {
+    res.sendFile(__dirname + path.join('views', 'addEmployee.html'));
+});
+app.get("/images/add", (req, res) => {
+    res.sendFile(__dirname + path.join('views', 'addImage.html'));
 });
 app.get("/managers", (req, res) => {
     data_service.getManagers().then((data) => {
