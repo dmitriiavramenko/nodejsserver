@@ -39,10 +39,10 @@ app.get("/departments", (req, res) => {
     })
 });
 app.get("/employees/add", (req, res) => {
-    res.sendFile(__dirname + path.join('views', 'addEmployee.html'));
+    res.sendFile(__dirname + path.join('/views', 'addEmployee.html'));
 });
 app.get("/images/add", (req, res) => {
-    res.sendFile(__dirname + path.join('views', 'addImage.html'));
+    res.sendFile(__dirname + path.join('/views', 'addImage.html'));
 });
 app.get("/managers", (req, res) => {
     data_service.getManagers().then((data) => {
