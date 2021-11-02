@@ -24,6 +24,19 @@ exports.initialize = function() {
     });
 }
 
+exports.addEmployee = function(employeeData) {
+    return new Promise((resolve, reject) => {
+        if (employeeData.isManager == undefined) {
+            employeeData.isManager = false;
+        } else {
+            employeeData.isManager = true;
+        }
+        employeeData.employeeNum = employees.length + 1;
+        employees.push(employeeData);
+        resolve('Employee added.');
+    });
+}
+
 exports.getAllEmployees = function() {
     return new Promise(function(resolve, reject) {
         if (employees.length == 0) {
@@ -51,7 +64,7 @@ exports.getManagers = function() {
             reject("No data inside of array");
         }
         else {
-            tmp = [];
+            var tmp = [];
             for (let i = 0; i < employees.length; i++) {
                 if (employees[i].isManager == true) {
                     tmp[i] = employees[i];
@@ -61,3 +74,76 @@ exports.getManagers = function() {
         }
     });
 }
+
+exports.getEmployeesByStatus = function(status) {
+    return new Promise((resolve, reject) => {
+        if (employees.length == 0) {
+            reject("No data inside of array");
+        }
+        var tmp = [];
+        for (let i = 0; i < employees.length; i++) {
+            if (employees[i].status == status) {
+                tmp[i] = employees[i];
+            }
+        }
+        if (tmp.length == 0) {
+            reject("No matches!");
+        }
+        resolve(tmp);
+    });
+}
+
+exports.getEmployeesByDepartment = function(department) {
+    return new Promise((resolve, reject) => {
+        if (employees.length == 0) {
+            reject("No results returned");
+        }
+        var tmp = [];
+        for (let i = 0; i < employees.length; i++) {
+            if (employees[i].departments == department) {
+                tmp[i] = employees[i];
+            }
+        }
+        if (tmp.length == 0) {
+            reject("No matches!");
+        }
+        resolve(tmp);
+    });
+}
+
+exports.getEmployeesByManager = function(manager) {
+    return new Promise((resolve, reject) => {
+        if (employees.length == 0) {
+            reject("No results returned");
+        }
+        var tmp = [];
+        for (let i = 0; i < employees.length; i++) {
+            if (employees[i].employeeManagerNum == manager) {
+                tmp[i] = employees[i];
+            }
+        }
+        if (tmp.length == 0) {
+            reject("No matches!");
+        }
+        resolve(tmp);
+    });
+}
+
+exports.getEmployeesByNum = function(num) {
+    return new Promise((resolve, reject) => {
+        if (employees.length == 0) {
+            reject("No results returned");
+        }
+        var tmp = [];
+        for (let i = 0; i < employees.length; i++) {
+            if (employees[i].employeeNum == num) {
+                tmp[i] = employees[i];
+            }
+        }
+        if (tmp.length == 0) {
+            reject("No matches!");
+        }
+        resolve(tmp);
+    });
+}
+
