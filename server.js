@@ -1,10 +1,10 @@
 /*********************************************************************************
-* BTI325 – Assignment 2
+* BTI325 – Assignment 3
 * I declare that this assignment is my own work in accordance with Seneca Academic Policy. No part 
 * of this assignment has been copied manually or electronically from any other source 
 * (including 3rd party web sites) or distributed to other students.
 * 
-* Name: Dmitrii Avramenko Student ID: 128138203 Date: 10.10.2021
+* Name: Dmitrii Avramenko Student ID: 128138203 Date: 01.11.2021
 *
 * Online (Heroku) Link: https://dmitriiavramenko.herokuapp.com/
 *
@@ -66,7 +66,7 @@ app.get("/employee/:value", function (req, res) {
     data_service.getEmployeesByNum(req.params.employeeNum).then((data) => {
         res.json(data);
     }).catch((err) => {
-        res.json({ message: err })
+        res.json("message: " + err);
     })
 });
 app.get("/departments", (req, res) => {

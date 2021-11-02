@@ -100,7 +100,7 @@ exports.getEmployeesByDepartment = function(department) {
         }
         var tmp = [];
         for (let i = 0; i < employees.length; i++) {
-            if (employees[i].departments == department) {
+            if (employees[i].department == department) {
                 tmp[i] = employees[i];
             }
         }
