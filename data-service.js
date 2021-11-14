@@ -1,4 +1,5 @@
 var fs = require("fs");
+const { resolve } = require("path");
 var employees = [];
 var departments = [];
 
@@ -26,14 +27,14 @@ exports.initialize = function() {
 
 exports.addEmployee = function(employeeData) {
     return new Promise((resolve, reject) => {
-        if (employeeData.isManager == undefined) {
+        if (employeeData.isManager === undefined) {
             employeeData.isManager = false;
         } else {
             employeeData.isManager = true;
         }
         employeeData.employeeNum = employees.length + 1;
         employees.push(employeeData);
-        resolve('Employee added.');
+        resolve();
     });
 }
 
@@ -134,16 +135,26 @@ exports.getEmployeesByNum = function(num) {
         if (employees.length == 0) {
             reject("No results returned");
         }
-        var tmp = [];
+        var tmp = 0;
         for (let i = 0; i < employees.length; i++) {
             if (employees[i].employeeNum == num) {
-                tmp[i] = employees[i];
+                tmp = employees[i];
             }
         }
-        if (tmp.length == 0) {
+        if (!tmp) {
             reject("No matches!");
         }
         resolve(tmp);
     });
 }
 
+exports.updateEmployee = function(employeeData) {
+    return new Promise((resolve, reject) => {
+        for (let i = 0; i < employees.length; i++) {
+            if (employees[i].employeeNum == employeeData.employeeNum) {
+                employees[i] = employeeData;
+                resolve();
+            }
+        }
+    });
+}
