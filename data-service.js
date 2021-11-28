@@ -207,7 +207,7 @@ exports.updateDepartment = function(departmentData) {
             if (departmentData[prop] == "")
                 departmentData[prop] = null;
         }
-        Employee.update(departmentData, {
+        Department.update(departmentData, {
             where: {
                 departmentId: departmentData.departmentId
             }

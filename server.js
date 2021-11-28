@@ -82,7 +82,6 @@ app.post("/departments/add", (req, res) => {
     })
 });
 app.post("/department/update", (req, res) => {
-    console.log(req.body);
     data_service.updateDepartment(req.body).then((data) =>{
         res.redirect("/departments");
     }).catch(function(){
@@ -141,7 +140,6 @@ app.get("/employees", (req, res) => {
     }
 });
 app.post("/employee/update", (req, res) => {
-    console.log(req.body);
     data_service.updateEmployee(req.body).then((data) =>{
         res.redirect("/employees");
     }).catch(function(){
