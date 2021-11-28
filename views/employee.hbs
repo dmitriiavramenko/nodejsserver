@@ -20,11 +20,6 @@
                     </div>
                 </div>
                 <div class="row">
-                     <div class="col-md-6">
-                        <div class="form-group">
-                                <input class="form-control" id="employeeNum" name="employeeNum" type="hidden" value="{{viewData.employee.employeeNum}}"/>
-                        </div>
-                    </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="email"> Email: </label>
@@ -63,6 +58,11 @@
                                 <input class="form-control" id="addressPostal" name="addressPostal" type="text" value="{{viewData.employee.addressPostal}}"/>
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                                <input class="form-control" id="employeeNum" name="employeeNum" type="hidden" value="{{viewData.employee.employeeNum}}"/>
+                        </div>
+                    </div>
                 </div>
             </fieldset>
             <fieldset>
@@ -71,7 +71,7 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="isManager"> Manager: </label>
-                            <input class="form-control" id="isManager" name="isManager" type="checkbox" value="{{viewData.employee.isManager}}" {{#if employee.isManager}} checked {{/if}}/>
+                            <input class="form-control" id="isManager" name="isManager" type="checkbox" value="{{viewData.employee.isManager}}" {{#if viewData.employee.isManager}} checked {{/if}}/>
                         </div>
                     </div>
                     <div class="col-md-3">

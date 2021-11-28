@@ -1,10 +1,10 @@
 /*********************************************************************************
-* BTI325 – Assignment 4
+* BTI325 – Assignment 5
 * I declare that this assignment is my own work in accordance with Seneca Academic Policy. No part 
 * of this assignment has been copied manually or electronically from any other source 
 * (including 3rd party web sites) or distributed to other students.
 * 
-* Name: Dmitrii Avramenko Student ID: 128138203 Date: 14.11.2021
+* Name: Dmitrii Avramenko Student ID: 128138203 Date: 27.11.2021
 *
 * Online (Heroku) Link: https://dmitriiavramenko.herokuapp.com/
 *
@@ -77,12 +77,16 @@ app.get("/departments/add", (req, res) => {
 app.post("/departments/add", (req, res) => {
     data_service.addDepartment(req.body).then((data) => {
         res.redirect("/departments");
+    }).catch(function(){
+        res.status(500).send("Unable to Add Department");
     })
 });
 app.post("/department/update", (req, res) => {
     console.log(req.body);
     data_service.updateDepartment(req.body).then((data) =>{
         res.redirect("/departments");
+    }).catch(function(){
+        res.status(500).send("Unable to Update Department");
     })
 });
 app.get("/department/:departmentId", function (req, res) {
@@ -140,6 +144,8 @@ app.post("/employee/update", (req, res) => {
     console.log(req.body);
     data_service.updateEmployee(req.body).then((data) =>{
         res.redirect("/employees");
+    }).catch(function(){
+        res.status(500).send("Unable to Update Employee");
     })
 });
 app.get("/employees/add", (req, res) => {
@@ -152,6 +158,15 @@ app.get("/employees/add", (req, res) => {
 app.post("/employees/add", (req, res) => {
     data_service.addEmployee(req.body).then((data) => {
         res.redirect("/employees");
+    }).catch(function(){
+        res.status(500).send("Unable to Create Employee");
+    })
+});
+app.get("/employees/delete/:employeeNum", function (req, res) {
+    data_service.deleteEmployeesByNum(req.params.employeeNum).then((data) => {
+        res.redirect("/employees");
+    }).catch((err) => {
+        res.status(500).send("Unable to Remove Employee / Employee not found");
     })
 });
 app.get("/employee/:employeeNum", function (req, res) {
